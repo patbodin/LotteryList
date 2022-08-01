@@ -17,7 +17,7 @@ class Lottery {
     
 }
 
-async function processScrape(dateName){
+async function processScrape(dateName, year){
     try {
 
         const fullList = new Lottery();
@@ -28,7 +28,7 @@ async function processScrape(dateName){
         // const myUrl = "https://www.myhora.com/%E0%B8%AB%E0%B8%A7%E0%B8%A2/%E0%B8%87%E0%B8%A7%E0%B8%94-1-%E0%B8%AA%E0%B8%B4%E0%B8%87%E0%B8%AB%E0%B8%B2%E0%B8%84%E0%B8%A1-2565.aspx";
 
         const rootUrl = "https://www.myhora.com/หวย/"
-        const contextPath = "งวด-" + dateName;
+        const contextPath = "งวด-" + dateName + "-" + year;
         const extName = ".aspx"
 
         // let configDate = JSON.parse(fs.readFileSync('./config/config.json', 'utf-8'));
@@ -85,15 +85,21 @@ async function processScrape(dateName){
 
         // console.log(fullList);
 
-        writeJSON(contextPath, fullList);
+        writeJSON(contextPath, year, fullList);
         console.log("-- " + contextPath + " DONE!" + " --");
     } catch(err) {
         console.log(err);
     }
 }
 
-function writeJSON(filename, data) {
-    fs.writeFile("./list/" + filename + ".json", JSON.stringify(data, null, 2), (err) => {
+function writeJSON(filename, subdir, data) {
+    var dir = "./list/" + subdir + "/";
+
+    if (!fs.existsSync(dir)){
+        fs.mkdirSync(dir, { recursive: true });
+    }
+
+    fs.writeFile(dir + filename + ".json", JSON.stringify(data, null, 2), (err) => {
         if(err) {
             console.log(err);
             return;
@@ -110,7 +116,7 @@ async function main() {
         for( j = 0; j < configDate.installmentList[i].installment.length; j++){
             // processScrape("1-สิงหาคม-2565");
             // console.log(configDate.installmentList[0].installment[i] + "-" + configDate.installmentList[0].year);
-            await processScrape(configDate.installmentList[i].installment[j] + "-" + configDate.installmentList[i].year);
+            await processScrape(configDate.installmentList[i].installment[j], configDate.installmentList[i].year);
         }
     }
 }
