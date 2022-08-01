@@ -32,7 +32,7 @@ async function processScrape(dateName){
         const extName = ".aspx"
 
         // let configDate = JSON.parse(fs.readFileSync('./config/config.json', 'utf-8'));
-        console.log(configDate.installmentList[0]);
+        // console.log(configDate.installmentList[0]);
 
         // fullList.firstAward.push("test");
         // fullList.firstAward.push("oh my gosh");
@@ -40,7 +40,7 @@ async function processScrape(dateName){
         // listPosition[0].push("yyy");
 
         // console.log(fullList);
-        console.log(encodeURI(rootUrl + contextPath + extName));
+        // console.log(encodeURI(rootUrl + contextPath + extName));
 
         //-- Fetch HTML
         // const { data } = await axios.get(myUrl);
@@ -48,6 +48,7 @@ async function processScrape(dateName){
 
         const $ = cheerio.load(data);
 
+        //-- Extract element
         const itemHTML = $("div#main_lotto");
         var lowerRoundNum = 2;
 
@@ -56,7 +57,7 @@ async function processScrape(dateName){
 
         itemHTML.find("div.lot-dr").children(".lot-dc.lotto-fxl.py-20").each(function(i, elm) {
             // console.log("-->" + i);
-            console.log($(this).text().trim());
+            // console.log($(this).text().trim());
             if(i == 1 || i == 2) {
                 var answ = $(this).text().trim().split(' ');
                 answ.forEach(element => {
@@ -82,9 +83,10 @@ async function processScrape(dateName){
         fullList.fourthAward.sort();
         fullList.fifthAward.sort();
 
-        console.log(fullList);
+        // console.log(fullList);
 
         writeJSON(contextPath, fullList);
+        console.log("-- " + contextPath + " DONE!" + " --");
     } catch(err) {
         console.log(err);
     }
@@ -104,10 +106,12 @@ function writeJSON(filename, data) {
 async function main() {
     // console.log(configDate.installmentList.length);
     // console.log(configDate.installmentList[0].installment.length);
-    for( i = 0; i < configDate.installmentList[0].installment.length; i++){
-        // processScrape("1-สิงหาคม-2565");
-        // console.log(configDate.installmentList[0].installment[i] + "-" + configDate.installmentList[0].year);
-        await processScrape(configDate.installmentList[0].installment[i] + "-" + configDate.installmentList[0].year);
+    for( i = 0; i < configDate.installmentList.length; i++) {
+        for( j = 0; j < configDate.installmentList[i].installment.length; j++){
+            // processScrape("1-สิงหาคม-2565");
+            // console.log(configDate.installmentList[0].installment[i] + "-" + configDate.installmentList[0].year);
+            await processScrape(configDate.installmentList[i].installment[j] + "-" + configDate.installmentList[i].year);
+        }
     }
 }
 
