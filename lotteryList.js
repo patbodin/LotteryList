@@ -2,7 +2,7 @@ const axios = require("axios");
 const cheerio = require("cheerio");
 const fs = require("fs");
 
-const myUrl = "https://www.myhora.com/%E0%B8%AB%E0%B8%A7%E0%B8%A2/%E0%B8%87%E0%B8%A7%E0%B8%94-1-%E0%B8%AA%E0%B8%B4%E0%B8%87%E0%B8%AB%E0%B8%B2%E0%B8%84%E0%B8%A1-2565.aspx";
+// const myUrl = "https://www.myhora.com/%E0%B8%AB%E0%B8%A7%E0%B8%A2/%E0%B8%87%E0%B8%A7%E0%B8%94-1-%E0%B8%AA%E0%B8%B4%E0%B8%87%E0%B8%AB%E0%B8%B2%E0%B8%84%E0%B8%A1-2565.aspx";
 
 const rootUrl = "https://www.myhora.com/หวย/"
 const contextPath = "งวด-1-สิงหาคม-2565";
@@ -33,17 +33,18 @@ async function processScrape(){
         console.log(encodeURI(rootUrl + contextPath + extName));
 
         //-- Fetch HTML
-        const { data } = await axios.get(myUrl);
+        // const { data } = await axios.get(myUrl);
+        const { data } = await axios.get(encodeURI(rootUrl + contextPath + extName));
 
         const $ = cheerio.load(data);
 
-        const item1 = $("div#main_lotto");
+        const itemHTML = $("div#main_lotto");
         var lowerRoundNum = 2;
 
         // console.log(data);
         // console.log(item1.find("div.lot-dr").children(".lot-dc.lotto-fxl.py-20").length);
 
-        item1.find("div.lot-dr").children(".lot-dc.lotto-fxl.py-20").each(function(i, elm) {
+        itemHTML.find("div.lot-dr").children(".lot-dc.lotto-fxl.py-20").each(function(i, elm) {
             // console.log("-->" + i);
             console.log($(this).text().trim());
             if(i == 1 || i == 2) {
@@ -57,7 +58,7 @@ async function processScrape(){
             
         })
         
-        item1.find("div.lot-c100").each(function(i, elm) {
+        itemHTML.find("div.lot-c100").each(function(i, elm) {
             // console.log("================= รางวัลที่ " + roundNum + " =================");
             $(this).find(".lot-dc.lotto-fx.lot-c20").each(function(j, el) {
                 // console.log($(this).text());
