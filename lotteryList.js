@@ -1,12 +1,7 @@
 const axios = require("axios");
 const cheerio = require("cheerio");
 const fs = require("fs");
-
-// const myUrl = "https://www.myhora.com/%E0%B8%AB%E0%B8%A7%E0%B8%A2/%E0%B8%87%E0%B8%A7%E0%B8%94-1-%E0%B8%AA%E0%B8%B4%E0%B8%87%E0%B8%AB%E0%B8%B2%E0%B8%84%E0%B8%A1-2565.aspx";
-
-const rootUrl = "https://www.myhora.com/หวย/"
-const contextPath = "งวด-1-สิงหาคม-2565";
-const extName = ".aspx"
+const configDate = require('./config/config.json');
 
 const fullList = {
     firstAward: [],
@@ -22,8 +17,18 @@ const fullList = {
 const listUpperPosition = [fullList.firstAward, fullList.three_prefix, fullList.three_suffix, fullList.two_suffix];
 const listLowerPosition = [fullList.firstAward, fullList.secondAward, fullList.thirdAward, fullList.fourthAward, fullList.fifthAward];
 
-async function processScrape(){
+async function processScrape(dateName){
     try {
+
+        // const myUrl = "https://www.myhora.com/%E0%B8%AB%E0%B8%A7%E0%B8%A2/%E0%B8%87%E0%B8%A7%E0%B8%94-1-%E0%B8%AA%E0%B8%B4%E0%B8%87%E0%B8%AB%E0%B8%B2%E0%B8%84%E0%B8%A1-2565.aspx";
+
+        const rootUrl = "https://www.myhora.com/หวย/"
+        const contextPath = "งวด-" + dateName;
+        const extName = ".aspx"
+
+        // let configDate = JSON.parse(fs.readFileSync('./config/config.json', 'utf-8'));
+        console.log(configDate.installmentList[0]);
+
         // fullList.firstAward.push("test");
         // fullList.firstAward.push("oh my gosh");
         // listPosition[0].push("xxx");
@@ -74,14 +79,14 @@ async function processScrape(){
 
         console.log(fullList);
 
-        writeJSON(fullList);
+        writeJSON(contextPath, fullList);
     } catch(err) {
         console.log(err);
     }
 }
 
-function writeJSON(data) {
-    fs.writeFile("./list/" + contextPath + ".json", JSON.stringify(data, null, 2), (err) => {
+function writeJSON(filename, data) {
+    fs.writeFile("./list/" + filename + ".json", JSON.stringify(data, null, 2), (err) => {
         if(err) {
             console.log(err);
             return;
@@ -91,4 +96,8 @@ function writeJSON(data) {
     })
 }
 
-processScrape();
+function main() {
+    processScrape("1-สิงหาคม-2565");
+}
+
+main();
