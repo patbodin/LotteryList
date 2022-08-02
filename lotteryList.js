@@ -117,9 +117,14 @@ async function main(myYear) {
         var procJSON = utils.getElementJSON(myYear)
         // console.log(utils.getElementJSON(myYear));
 
-        for( j = 0; j < procJSON.installment.length; j++){
-            await processScrape(procJSON.installment[j], procJSON.year);
+        if(procJSON != undefined){
+            for( j = 0; j < procJSON.installment.length; j++){
+                await processScrape(procJSON.installment[j], procJSON.year);
+            }
+        } else {
+            console.log("No element to process. Please check!");
         }
+        
     } else {
         // console.log(configDate.installmentList.length);
         // console.log(configDate.installmentList[0].installment.length);
@@ -135,3 +140,4 @@ async function main(myYear) {
 }
 
 main(2565);
+// main();
