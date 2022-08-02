@@ -2,6 +2,7 @@ const axios = require("axios");
 const cheerio = require("cheerio");
 const fs = require("fs");
 const configDate = require('./config/config.json');
+const utils = require('./utils');
 
 class Lottery {
     constructor() {
@@ -109,16 +110,28 @@ function writeJSON(filename, subdir, data) {
     })
 }
 
-async function main() {
-    // console.log(configDate.installmentList.length);
-    // console.log(configDate.installmentList[0].installment.length);
-    for( i = 0; i < configDate.installmentList.length; i++) {
-        for( j = 0; j < configDate.installmentList[i].installment.length; j++){
-            // processScrape("1-สิงหาคม-2565");
-            // console.log(configDate.installmentList[0].installment[i] + "-" + configDate.installmentList[0].year);
-            await processScrape(configDate.installmentList[i].installment[j], configDate.installmentList[i].year);
+async function main(myYear) {
+
+    if(myYear != null) {
+
+        var procJSON = utils.getElementJSON(myYear)
+        // console.log(utils.getElementJSON(myYear));
+
+        for( j = 0; j < procJSON.installment.length; j++){
+            await processScrape(procJSON.installment[j], procJSON.year);
+        }
+    } else {
+        // console.log(configDate.installmentList.length);
+        // console.log(configDate.installmentList[0].installment.length);
+        for( i = 0; i < configDate.installmentList.length; i++) {
+            for( j = 0; j < configDate.installmentList[i].installment.length; j++){
+                // processScrape("1-สิงหาคม-2565");
+                // console.log(configDate.installmentList[0].installment[i] + "-" + configDate.installmentList[0].year);
+                await processScrape(configDate.installmentList[i].installment[j], configDate.installmentList[i].year);
+            }
         }
     }
+    
 }
 
-main();
+main(2565);
