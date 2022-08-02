@@ -1,6 +1,5 @@
 const axios = require("axios");
 const cheerio = require("cheerio");
-const fs = require("fs");
 const configDate = require('./config/config.json');
 const utils = require('./utils');
 
@@ -86,29 +85,14 @@ async function processScrape(dateName, year){
 
         // console.log(fullList);
 
-        writeJSON(contextPath, year, fullList);
+        utils.writeJSON(contextPath, year, fullList);
         console.log("-- " + contextPath + " DONE!" + " --");
     } catch(err) {
         console.log(err);
     }
 }
 
-function writeJSON(filename, subdir, data) {
-    var dir = "./list/" + subdir + "/";
 
-    if (!fs.existsSync(dir)){
-        fs.mkdirSync(dir, { recursive: true });
-    }
-
-    fs.writeFile(dir + filename + ".json", JSON.stringify(data, null, 2), (err) => {
-        if(err) {
-            console.log(err);
-            return;
-        }
-
-        console.log("Write File Completed!");
-    })
-}
 
 async function main(myYear) {
 

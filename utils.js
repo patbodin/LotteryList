@@ -1,4 +1,5 @@
 const configDate = require('./config/config.json');
+const fs = require("fs");
 
 function getElementJSON(myYear) {
     for(i = 0; i < configDate.installmentList.length; i++){
@@ -16,6 +17,24 @@ function getElementJSON(myYear) {
     return undefined;
 }
 
+function writeJSON(filename, subdir, data) {
+    var dir = "./list/" + subdir + "/";
+
+    if (!fs.existsSync(dir)){
+        fs.mkdirSync(dir, { recursive: true });
+    }
+
+    fs.writeFile(dir + filename + ".json", JSON.stringify(data, null, 2), (err) => {
+        if(err) {
+            console.log(err);
+            return;
+        }
+
+        console.log("Write File Completed!");
+    })
+}
+
 module.exports = {
-    getElementJSON
+    getElementJSON,
+    writeJSON
 };
