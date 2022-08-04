@@ -122,7 +122,7 @@ async function mainProc(myYear) {
     
 }
 
-function main(){
+async function main(){
 
     const myArgs = process.argv.slice(2);
     console.log('myArgs: ', myArgs);
@@ -130,7 +130,7 @@ function main(){
     if(myArgs.length == 0) {
         
         try {
-            mainProc();
+            await mainProc();
         }
         catch(err) {
             console.log(err);
@@ -138,14 +138,21 @@ function main(){
     }
     else if(myArgs.length == 1) {
         try {
-            mainProc(parseInt(myArgs[0]));
+            await mainProc(parseInt(myArgs[0]));
         }
         catch(err) {
             console.log(err);
         }
     }
     else if(myArgs.length > 1) {
-        console.log("Under construction");
+        // console.log("Under construction");
+
+        // myArgs.forEach(element => mainProc(parseInt(element)));
+
+        for (const element in myArgs) {
+            // console.log(element);
+            await mainProc(parseInt(myArgs[element]));
+        }
     }
     else {
         console.log("Not support yet!");
