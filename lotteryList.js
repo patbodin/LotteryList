@@ -2,6 +2,7 @@ const axios = require("axios");
 const cheerio = require("cheerio");
 const configDate = require('./config/config.json');
 const utils = require('./utils');
+const chalk = require('chalk');
 
 class Lottery {
     constructor() {
@@ -86,15 +87,13 @@ async function processScrape(dateName, year){
         // console.log(fullList);
 
         utils.writeJSON(contextPath, year, fullList);
-        console.log("-- " + contextPath + " DONE!" + " --");
+        console.log(chalk.green("-- " + contextPath + " DONE!" + " --"));
     } catch(err) {
         console.log(err);
     }
 }
 
-
-
-async function main(myYear) {
+async function mainProc(myYear) {
 
     if(myYear != null) {
 
@@ -123,5 +122,36 @@ async function main(myYear) {
     
 }
 
-main(2565);
-// main();
+function main(){
+
+    const myArgs = process.argv.slice(2);
+    console.log('myArgs: ', myArgs);
+
+    if(myArgs.length == 0) {
+        
+        try {
+            mainProc();
+        }
+        catch(err) {
+            console.log(err);
+        }
+    }
+    else if(myArgs.length == 1) {
+        try {
+            mainProc(parseInt(myArgs[0]));
+        }
+        catch(err) {
+            console.log(err);
+        }
+    }
+    else if(myArgs.length > 1) {
+        console.log("Under construction");
+    }
+    else {
+        console.log("Not support yet!");
+    }
+}
+
+//-- Run main function
+main();
+

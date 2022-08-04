@@ -1,5 +1,6 @@
 const configDate = require('./config/config.json');
 const fs = require("fs");
+const chalk = require('chalk');
 
 function getElementJSON(myYear) {
     for(i = 0; i < configDate.installmentList.length; i++){
@@ -30,7 +31,7 @@ function writeJSON(filename, subdir, data) {
             return;
         }
 
-        console.log("Write File Completed!");
+        console.log("Write File " + chalk.bold.blue("Completed!"));
     })
 }
 
