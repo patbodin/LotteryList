@@ -6,6 +6,7 @@ const chalk = require('chalk');
 
 class Lottery {
     constructor() {
+        this.name = "";
         this.firstAward = [];
         this.three_prefix = [];
         this.three_suffix = [];
@@ -31,6 +32,8 @@ async function processScrape(dateName, year){
         const rootUrl = "https://www.myhora.com/หวย/"
         const contextPath = "งวด-" + dateName + "-" + year;
         const extName = ".aspx"
+
+        fullList.name = utils.generateInstallmentName(dateName + "-" + year);
 
         // let configDate = JSON.parse(fs.readFileSync('./config/config.json', 'utf-8'));
         // console.log(configDate.installmentList[0]);
