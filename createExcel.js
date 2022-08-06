@@ -4,10 +4,10 @@ const chalk = require('chalk');
 
  function main(){
 
-    const readPath = "C:/test/";
-    const writePath = "C:/test/";
+    const readPath = "C:/test/data/";
+    const writePath = "C:/test/result/";
     const fileName = "result.xlsx"
-    const fileExt = ".json";
+    // const fileExt = ".json";
 
     // console.log(chalk.rgb(55,77,99).underline("Hello, ") + chalk.hex('#75a549')("Welcome to excel generator!"));
 
