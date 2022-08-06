@@ -1,6 +1,7 @@
 const configDate = require('./config/config.json');
 const fs = require("fs");
 const chalk = require('chalk');
+const writeXlsxFile = require("write-excel-file/node");
 
 function getElementJSON(myYear) {
     for(i = 0; i < configDate.installmentList.length; i++){
@@ -158,9 +159,98 @@ function findLotteryFile(fullDateTime){
     return JSON.parse(objFile);
 }
 
+async function createExcelFile(readPath, writePath, filename){
+    console.log("Start creating EXCEL file...");
+
+    const HEADER_ROW = [
+        {
+          value: 'No',
+          fontWeight: 'bold',
+          backgroundColor: '#FFFF00',
+          fontSize: 11
+        },
+        {
+          value: 'Number',
+          fontWeight: 'bold',
+          backgroundColor: '#FFFF00',
+          fontSize: 11
+        },
+        {
+          value: 'Type',
+          fontWeight: 'bold',
+          backgroundColor: '#FFFF00',
+          fontSize: 11
+        },
+        {
+          value: 'DateTH',
+          fontWeight: 'bold',
+          backgroundColor: '#FFFF00',
+          fontSize: 11
+        },
+        {
+            value: 'DateEN',
+            fontWeight: 'bold',
+            backgroundColor: '#FFFF00',
+            fontSize: 11
+        }
+    ];
+      
+    const DATA_ROW_1 = [
+        // "Name"
+        {
+          type: String,
+          value: 'John Smith'
+        },
+      
+        // "Date of Birth"
+        {
+          type: Date,
+          value: new Date(),
+          format: 'mm/dd/yyyy'
+        },
+      
+        // "Cost"
+        {
+          type: Number,
+          value: 1800
+        },
+      
+        // "Paid"
+        {
+          type: Boolean,
+          value: true
+        },
+
+        // "Paid"
+        {
+            type: Boolean,
+            value: true
+          }
+    ];
+      
+    // const data = [
+    //     HEADER_ROW,
+    //     DATA_ROW_1,
+    //     DATA_ROW_1,
+    // ];
+
+    let data = [];
+    data.push(HEADER_ROW);
+    data.push(DATA_ROW_1);
+
+    await writeXlsxFile(data, {
+        filePath: writePath + filename,
+        fontSize: 11,
+        sheet: 'AllData'
+    });
+
+    console.log(chalk.hex('#00ddcc')("DONE!"));
+}
+
 module.exports = {
     getElementJSON,
     writeJSON,
     generateInstallmentName,
-    findLotteryFile
+    findLotteryFile,
+    createExcelFile
 };
