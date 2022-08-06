@@ -12,6 +12,7 @@
   "dependencies": {
     "axios": "^0.27.2",
     "chalk": "^4.1.2",
-    "cheerio": "^1.0.0-rc.12"
+    "cheerio": "^1.0.0-rc.12",
+    "write-excel-file": "^1.4.10"
   }
 }
