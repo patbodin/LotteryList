@@ -349,6 +349,14 @@ async function createExcelFile(readPath, writePath, filename){
             data_final.push(DATA_ROW);
         });
 
+        objFile.two_suffix.forEach(function(ele, index) {
+            // console.log(ele);
+            DATA_ROW = setData(lineCount, ele, "Two_Suffix", objFile.name, dateConversion(objFile.name, "TH"), dateConversion(objFile.name, "EN"));
+            lineCount++;
+
+            data_final.push(DATA_ROW);
+        });
+
         objFile.secondAward.forEach(function(ele, index) {
             // console.log(ele);
             DATA_ROW = setData(lineCount, ele, "Second", objFile.name, dateConversion(objFile.name, "TH"), dateConversion(objFile.name, "EN"));
