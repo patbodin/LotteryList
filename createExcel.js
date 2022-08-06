@@ -2,7 +2,7 @@ const configDate = require('./config/config.json');
 const utils = require('./utils');
 const chalk = require('chalk');
 
-function main(){
+ function main(){
 
     const readPath = "C:/test/";
     const writePath = "C:/test/";

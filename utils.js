@@ -2,6 +2,8 @@ const configDate = require('./config/config.json');
 const fs = require("fs");
 const chalk = require('chalk');
 const writeXlsxFile = require("write-excel-file/node");
+const process = require("process");
+const exceljs = require('exceljs');
 
 function getElementJSON(myYear) {
     for(i = 0; i < configDate.installmentList.length; i++){
@@ -162,30 +164,38 @@ function findLotteryFile(fullDateTime){
 async function createExcelFile(readPath, writePath, filename){
     console.log("Start creating EXCEL file...");
 
+    let lineCount = 1;
+
     const HEADER_ROW = [
         {
-          value: 'No',
-          fontWeight: 'bold',
-          backgroundColor: '#FFFF00',
-          fontSize: 11
+            value: 'No',
+            fontWeight: 'bold',
+            backgroundColor: '#FFFF00',
+            fontSize: 11
         },
         {
-          value: 'Number',
-          fontWeight: 'bold',
-          backgroundColor: '#FFFF00',
-          fontSize: 11
+            value: 'Number',
+            fontWeight: 'bold',
+            backgroundColor: '#FFFF00',
+            fontSize: 11
         },
         {
-          value: 'Type',
-          fontWeight: 'bold',
-          backgroundColor: '#FFFF00',
-          fontSize: 11
+            value: 'Type',
+            fontWeight: 'bold',
+            backgroundColor: '#FFFF00',
+            fontSize: 11
         },
         {
-          value: 'DateTH',
-          fontWeight: 'bold',
-          backgroundColor: '#FFFF00',
-          fontSize: 11
+            value: 'Name',
+            fontWeight: 'bold',
+            backgroundColor: '#FFFF00',
+            fontSize: 11
+        },
+        {
+            value: 'DateTH',
+            fontWeight: 'bold',
+            backgroundColor: '#FFFF00',
+            fontSize: 11
         },
         {
             value: 'DateEN',
@@ -198,47 +208,99 @@ async function createExcelFile(readPath, writePath, filename){
     const DATA_ROW_1 = [
         // "Name"
         {
-          type: String,
-          value: 'John Smith'
+            type: String,
+            value: 'John Smith'
         },
       
         // "Date of Birth"
         {
-          type: Date,
-          value: new Date(),
-          format: 'mm/dd/yyyy'
+            type: Date,
+            value: new Date(),
+            format: 'mm/dd/yyyy'
         },
       
         // "Cost"
         {
-          type: Number,
-          value: 1800
+            type: Number,
+            value: 1800
         },
       
         // "Paid"
         {
-          type: Boolean,
-          value: true
+            type: Boolean,
+            value: true
         },
 
         // "Paid"
         {
             type: Boolean,
             value: true
-          }
+        }
     ];
-      
+
     // const data = [
     //     HEADER_ROW,
     //     DATA_ROW_1,
     //     DATA_ROW_1,
     // ];
 
-    let data = [];
-    data.push(HEADER_ROW);
-    data.push(DATA_ROW_1);
+    const data_final = [HEADER_ROW];
+    // data_final.push(HEADER_ROW);
+    // data.push(DATA_ROW_1);
 
-    await writeXlsxFile(data, {
+    const allFiles = fs.readdirSync(readPath);
+
+    for (var i = 0; i < allFiles.length; i++){
+        
+        const DATA_ROW = [
+            // "No"
+            {
+                type: Number,
+                value: lineCount
+            },
+          
+            // "Number"
+            {
+                type: String,
+                value: "xxx",
+            },
+          
+            // "Type"
+            {
+                type: String,
+                value: allFiles[i]
+            },
+
+            // "Type"
+            {
+                type: String,
+                value: "yyyy"
+            },
+          
+            // "DateTH"
+            {
+                type: Date,
+                value: new Date(),
+                format: 'dd/mm/yyyy'
+            },
+    
+            // "DateEN"
+            {
+                type: Date,
+                value: new Date(),
+                format: 'dd/mm/yyyy'
+            }
+        ];
+
+        lineCount++;
+
+        data_final.push(DATA_ROW);
+    }
+
+    // console.log("======================================");
+    // console.log(data_final);
+
+    await writeXlsxFile(data_final, {
         filePath: writePath + filename,
         fontSize: 11,
         sheet: 'AllData'
@@ -247,10 +309,42 @@ async function createExcelFile(readPath, writePath, filename){
     console.log(chalk.hex('#00ddcc')("DONE!"));
 }
 
+function createExcelFile2(readPath, writePath, filename) {
+    console.log("Start creating CSV file...");
+    let lineCount = 1;
+    
+    let finalResult = "";
+    const HEADER = "No,Number,Type,Name,DateTH,DateEN\r\n";
+    let BODY = "";
+
+    const files = fs.readdirSync(readPath);
+
+    for (var i = 0; i < files.length; i++){
+        item = [i, 'John Doe', files[i], 'yyyy', 'ccc', 'zzzz'];
+        BODY = BODY + item.join(",");
+        BODY = BODY + "\r\n";
+        console.log(BODY);
+    }
+
+    finalResult = HEADER + "\r\n" + BODY;
+
+    console.log(finalResult);
+
+    fs.writeFile(writePath + filename, finalResult, (err) => {
+        if(err) {
+            console.log(err);
+            return;
+        }
+
+        console.log("Write File " + chalk.bold.blue("Completed!"));
+    })
+}
+
 module.exports = {
     getElementJSON,
     writeJSON,
     generateInstallmentName,
     findLotteryFile,
-    createExcelFile
+    createExcelFile,
+    createExcelFile2
 };
