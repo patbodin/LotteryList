@@ -69,7 +69,7 @@ function main(){
         for (const key in objJSON) {
             // console.log('key: ' + key);
             // console.log('value: ' + objJSON[key] + ' --- ' + objJSON[key].length);
-            if(key != "name") {
+            if(Array.isArray(objJSON[key])) {
                 
                 // console.log('value: ' + objJSON[key] + ' --- ' + objJSON[key].length);
                 // var xx = Enumberable.from(objJSON[key]).where(x => x == "83").select(x => x).toJSONString();
