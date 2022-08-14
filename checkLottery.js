@@ -19,6 +19,8 @@ function main(){
             process.exit(1);
         }
 
+        //-- Under construction
+        
         // const objJSON = utils.findLotteryFile("1_10_2564");
         // console.log(objJSON);
         console.log(chalk.hex("#b3d5fb")("Searching that number in all files..."));

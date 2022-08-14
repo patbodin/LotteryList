@@ -13,6 +13,7 @@
     "axios": "^0.27.2",
     "chalk": "^4.1.2",
     "cheerio": "^1.0.0-rc.12",
+    "commander": "^9.4.0",
     "exceljs": "^4.3.0",
     "linq": "^3.2.2",
     "write-excel-file": "^1.4.10"
