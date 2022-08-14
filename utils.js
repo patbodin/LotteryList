@@ -476,11 +476,38 @@ function createExcelFile2(readPath, writePath, filename) {
     })
 }
 
+function validateInputNumber(myInput) {
+    var result = true;
+
+    // console.log("input length => " + [2, 3, 6].includes(myInput.length));
+    if ([2, 3, 6].includes(myInput.length)){
+        var regex = /\d{x}/;
+        result = new RegExp(regex.source.replace("x", myInput.length), 'g').test(myInput);
+    } 
+    else {
+        result = false;
+    }
+
+    return result;
+}
+
+function validateFileName(myInput) {
+    var result = true;
+
+    // console.log("file name => " + myInput);
+    var regex = /\d{1,2}_\d{1,2}_\d{4}/;
+    result = new RegExp(regex, 'g').test(myInput);
+
+    return result;
+}
+
 module.exports = {
     getElementJSON,
     writeJSON,
     generateInstallmentName,
     findLotteryFile,
     createExcelFile,
-    createExcelFile2
+    createExcelFile2,
+    validateInputNumber,
+    validateFileName
 };

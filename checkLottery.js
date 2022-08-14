@@ -3,31 +3,6 @@ const utils = require('./utils');
 const chalk = require('chalk');
 const Enumberable = require('linq');
 
-function validateInputNumber(myInput) {
-    var result = true;
-
-    // console.log("input length => " + [2, 3, 6].includes(myInput.length));
-    if ([2, 3, 6].includes(myInput.length)){
-        var regex = /\d{x}/;
-        result = new RegExp(regex.source.replace("x", myInput.length), 'g').test(myInput);
-    } 
-    else {
-        result = false;
-    }
-
-    return result;
-}
-
-function validateFileName(myInput) {
-    var result = true;
-
-    // console.log("file name => " + myInput);
-    var regex = /\d{1,2}_\d{1,2}_\d{4}/;
-    result = new RegExp(regex, 'g').test(myInput);
-
-    return result;
-}
-
 function main(){
     // console.log(chalk.red("Hello Test"));
     const myArgs = process.argv.slice(2);
@@ -39,7 +14,7 @@ function main(){
         console.log(chalk.hex("#e3d37d")("Please input args!!!"));
     }
     else if (myArgs.length == 1) {
-        if(!validateInputNumber(myArgs[0])) {
+        if(!utils.validateInputNumber(myArgs[0])) {
             console.log(chalk.hex("#a7327c")("Invalid args!!!"));
             process.exit(1);
         }
@@ -49,7 +24,7 @@ function main(){
         console.log(chalk.hex("#b3d5fb")("Searching that number in all files..."));
     }
     else if (myArgs.length == 2) {
-        if(!validateInputNumber(myArgs[0]) || !validateFileName(myArgs[1])) {
+        if(!utils.validateInputNumber(myArgs[0]) || !utils.validateFileName(myArgs[1])) {
             console.log(chalk.hex("#a7327c")("Invalid args!!!"));
             process.exit(1);
         }
