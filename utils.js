@@ -4,6 +4,7 @@ const chalk = require('chalk');
 const writeXlsxFile = require("write-excel-file/node");
 const process = require("process");
 const exceljs = require('exceljs');
+const Enumerable = require('linq');
 
 function getElementJSON(myYear) {
     for(i = 0; i < configDate.installmentList.length; i++){
@@ -501,6 +502,39 @@ function validateFileName(myInput) {
     return result;
 }
 
+function findNumberInLottery(objJSON, myNumber){
+    // console.log(objJSON);
+    // Enumberable.from(objJSON).where(x => x == "83").select(x => x).log().toJoinedString();
+
+    //-- Initiate expression, then replaced later
+    const myRegex = /^xxx$/;
+
+    // const aaa = RegExp(/83/, 'g');
+    const objRegex = RegExp(myRegex.source.replace("xxx", myNumber), 'g');
+
+    for (const key in objJSON) {
+        // console.log('key: ' + key);
+        // console.log('value: ' + objJSON[key] + ' --- ' + objJSON[key].length);
+        if(Array.isArray(objJSON[key])) {
+            
+            // console.log('value: ' + objJSON[key] + ' --- ' + objJSON[key].length);
+            // var xx = Enumberable.from(objJSON[key]).where(x => x == "83").select(x => x).toJSONString();
+            var arrResult = JSON.parse(Enumerable.from(objJSON[key]).where(x => x.match(objRegex)).select(x => x).toJSONString());
+            
+            if(arrResult.length > 0){
+                console.log('key: ' + key);
+                // console.log("array length: " + arrResult.length);
+                console.log(arrResult);
+            }
+            
+        }
+    }
+    // console.log("test => " + objJSON['secondAward']);
+
+    // const bbb = /abcd/g;
+    // console.log('====> ' + bbb.source.replace("abcd", "\d\d\d89"));
+}
+
 module.exports = {
     getElementJSON,
     writeJSON,
@@ -509,5 +543,6 @@ module.exports = {
     createExcelFile,
     createExcelFile2,
     validateInputNumber,
-    validateFileName
+    validateFileName,
+    findNumberInLottery
 };
