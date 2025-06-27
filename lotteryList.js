@@ -29,9 +29,15 @@ async function processScrape(dateName, year){
 
         // const myUrl = "https://www.myhora.com/%E0%B8%AB%E0%B8%A7%E0%B8%A2/%E0%B8%87%E0%B8%A7%E0%B8%94-1-%E0%B8%AA%E0%B8%B4%E0%B8%87%E0%B8%AB%E0%B8%B2%E0%B8%84%E0%B8%A1-2565.aspx";
 
-        const rootUrl = "https://www.myhora.com/หวย/"
-        const contextPath = "งวด-" + dateName + "-" + year;
+        const rootUrl = "https://www.myhora.com/lottery/"
+        //const contextPath = "งวด-" + dateName + "-" + year;
+        const contextPath = "result-" + utils.dateConvertTHNameToNumber(dateName) + "-" + year;
         const extName = ".aspx"
+
+        const saveFileName = contextPath.replaceAll("result-", "").replaceAll("-", "_");
+
+        //console.log("=====> " + contextPath);
+        //console.log("=====> " + saveFileName);
 
         fullList.name = utils.generateInstallmentName(dateName + "-" + year);
 
@@ -73,10 +79,10 @@ async function processScrape(dateName, year){
             
         })
         
-        itemHTML.find("div.lot-c100").each(function(i, elm) {
+        itemHTML.find("div#p_result2").children(".lot-c100").each(function(i, elm) {
             // console.log("================= รางวัลที่ " + roundNum + " =================");
-            $(this).find(".lot-dc.lotto-fx.lot-c20").each(function(j, el) {
-                // console.log($(this).text());
+            $(this).find(".lot-dc.lotto-fx.lot-c30").each(function(j, el) {
+                //console.log($(this).text());
                 listLowerPosition[lowerRoundNum-1].push($(this).text().trim());
             })
             lowerRoundNum += 1;
@@ -89,7 +95,7 @@ async function processScrape(dateName, year){
 
         // console.log(fullList);
 
-        utils.writeJSON(contextPath, year, fullList);
+        utils.writeJSON("งวด-" + utils.dateConversion(saveFileName, "TH", true), year, fullList);
         console.log(chalk.green("-- " + contextPath + " DONE!" + " --"));
     } catch(err) {
         console.log(err);

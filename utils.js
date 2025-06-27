@@ -100,7 +100,64 @@ function generateInstallmentName(fullDateTime){
     return splittedDate[0] + "_" + monthList[splittedDate[1].trim()]["monthNumber"] + "_" + splittedDate[2];
 }
 
-function dateConversion(fullDateTime, lang){
+function dateConvertTHNameToNumber(fullDateTime){
+    const monthList = {
+        "มกราคม": {
+            "monthNumber": "01",
+            "monthENName": "January"
+        },
+        "กุมภาพันธ์": {
+            "monthNumber": "02",
+            "monthENName": "February"
+        },
+        "มีนาคม": {
+            "monthNumber": "03",
+            "monthENName": "March"
+        },
+        "เมษายน": {
+            "monthNumber": "04",
+            "monthENName": "April"
+        },
+        "พฤษภาคม": {
+            "monthNumber": "05",
+            "monthENName": "May"
+        },
+        "มิถุนายน": {
+            "monthNumber": "06",
+            "monthENName": "June"
+        },
+        "กรกฎาคม": {
+            "monthNumber": "07",
+            "monthENName": "July"
+        },
+        "สิงหาคม": {
+            "monthNumber": "08",
+            "monthENName": "August"
+        },
+        "กันยายน": {
+            "monthNumber": "09",
+            "monthENName": "September"
+        },
+        "ตุลาคม": {
+            "monthNumber": "10",
+            "monthENName": "October"
+        },
+        "พฤศจิกายน": {
+            "monthNumber": "11",
+            "monthENName": "November"
+        },
+        "ธันวาคม": {
+            "monthNumber": "12",
+            "monthENName": "December"
+        }
+    };
+
+    const splittedDate = (fullDateTime + "").trim().split("-");
+    
+    return splittedDate[0] + "-" + monthList[splittedDate[1].trim()]["monthNumber"];
+}
+
+function dateConversion(fullDateTime, lang, autoTextToNum=false){
     const monthList = {
         "1": {
             "monthTHName": "มกราคม",
@@ -155,12 +212,23 @@ function dateConversion(fullDateTime, lang){
     const splittedDate = (fullDateTime + "").trim().split("_");
 
     let finalDate = "";
-    if(String(lang).toUpperCase() == "TH") {
-        finalDate = splittedDate[0] + "-" + monthList[splittedDate[1].trim()]["monthTHName"] + "-" + splittedDate[2];
+    if(autoTextToNum == false){
+        if(String(lang).toUpperCase() == "TH") {
+            finalDate = splittedDate[0] + "-" + monthList[splittedDate[1].trim()]["monthTHName"] + "-" + splittedDate[2];
+        }
+        else {
+            finalDate = splittedDate[0] + "-" + monthList[splittedDate[1].trim()]["monthENName"] + "-" + (splittedDate[2]-543);
+        }
     }
     else {
-        finalDate = splittedDate[0] + "-" + monthList[splittedDate[1].trim()]["monthENName"] + "-" + (splittedDate[2]-543);
+        if(String(lang).toUpperCase() == "TH") {
+            finalDate = splittedDate[0] + "-" + monthList[Number(splittedDate[1].trim()) + ""]["monthTHName"] + "-" + splittedDate[2];
+        }
+        else {
+            finalDate = splittedDate[0] + "-" + monthList[Number(splittedDate[1].trim()) + ""]["monthENName"] + "-" + (splittedDate[2]-543);
+        }
     }
+    
     
     return finalDate;
 }
@@ -539,10 +607,12 @@ module.exports = {
     getElementJSON,
     writeJSON,
     generateInstallmentName,
+    dateConvertTHNameToNumber,
     findLotteryFile,
     createExcelFile,
     createExcelFile2,
     validateInputNumber,
     validateFileName,
-    findNumberInLottery
+    findNumberInLottery,
+    dateConversion
 };
