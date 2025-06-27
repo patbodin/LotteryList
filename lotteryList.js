@@ -7,14 +7,24 @@ const chalk = require('chalk');
 class Lottery {
     constructor() {
         this.name = "";
-        this.firstAward = [];
-        this.three_prefix = [];
-        this.three_suffix = [];
-        this.two_suffix = [];
-        this.secondAward = [];
-        this.thirdAward = [];
-        this.fourthAward = [];
-        this.fifthAward = [];
+        this.data = {
+            firstAward: [],
+            three_prefix: [],
+            three_suffix: [],
+            two_suffix: [],
+            secondAward: [],
+            thirdAward: [],
+            fourthAward: [],
+            fifthAward: []
+        };
+        // this.firstAward = [];
+        // this.three_prefix = [];
+        // this.three_suffix = [];
+        // this.two_suffix = [];
+        // this.secondAward = [];
+        // this.thirdAward = [];
+        // this.fourthAward = [];
+        // this.fifthAward = [];
     }
     
 }
@@ -24,8 +34,11 @@ async function processScrape(dateName, year){
 
         const fullList = new Lottery();
 
-        const listUpperPosition = [fullList.firstAward, fullList.three_prefix, fullList.three_suffix, fullList.two_suffix];
-        const listLowerPosition = [fullList.firstAward, fullList.secondAward, fullList.thirdAward, fullList.fourthAward, fullList.fifthAward];
+        //const listUpperPosition = [fullList.firstAward, fullList.three_prefix, fullList.three_suffix, fullList.two_suffix];
+        //const listLowerPosition = [fullList.firstAward, fullList.secondAward, fullList.thirdAward, fullList.fourthAward, fullList.fifthAward];
+
+        const listUpperPosition = [fullList.data.firstAward, fullList.data.three_prefix, fullList.data.three_suffix, fullList.data.two_suffix];
+        const listLowerPosition = [fullList.data.secondAward, fullList.data.thirdAward, fullList.data.fourthAward, fullList.data.fifthAward];
 
         // const myUrl = "https://www.myhora.com/%E0%B8%AB%E0%B8%A7%E0%B8%A2/%E0%B8%87%E0%B8%A7%E0%B8%94-1-%E0%B8%AA%E0%B8%B4%E0%B8%87%E0%B8%AB%E0%B8%B2%E0%B8%84%E0%B8%A1-2565.aspx";
 
@@ -60,7 +73,7 @@ async function processScrape(dateName, year){
 
         //-- Extract element
         const itemHTML = $("div#main_lotto");
-        var lowerRoundNum = 2;
+        var lowerRoundNum = 0;
 
         // console.log(data);
         // console.log(item1.find("div.lot-dr").children(".lot-dc.lotto-fxl.py-20").length);
@@ -83,15 +96,16 @@ async function processScrape(dateName, year){
             // console.log("================= รางวัลที่ " + roundNum + " =================");
             $(this).find(".lot-dc.lotto-fx.lot-c30").each(function(j, el) {
                 //console.log($(this).text());
-                listLowerPosition[lowerRoundNum-1].push($(this).text().trim());
+                listLowerPosition[lowerRoundNum].push($(this).text().trim());
+
             })
             lowerRoundNum += 1;
         })
 
-        fullList.secondAward.sort();
-        fullList.thirdAward.sort();
-        fullList.fourthAward.sort();
-        fullList.fifthAward.sort();
+        fullList.data.secondAward.sort();
+        fullList.data.thirdAward.sort();
+        fullList.data.fourthAward.sort();
+        fullList.data.fifthAward.sort();
 
         // console.log(fullList);
 
