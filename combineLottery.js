@@ -1,6 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 
+//-- Support ONLY Flat JSON Structure
+
 const folderPath = path.join(__dirname, './combine/'); //  เปลี่ยนชื่อโฟลเดอร์ของคุณ
 const allFiles = fs.readdirSync(folderPath).filter(f => f.endsWith('.json'));
 
