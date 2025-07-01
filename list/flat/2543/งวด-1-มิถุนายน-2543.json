@@ -1,0 +1,862 @@
+[
+  {
+    "date": "1_6_2543",
+    "award_type": "firstAward",
+    "number": "592761"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "three_prefix",
+    "number": ""
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "three_suffix",
+    "number": "705"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "three_suffix",
+    "number": "716"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "three_suffix",
+    "number": "810"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "three_suffix",
+    "number": "981"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "two_suffix",
+    "number": "16"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "secondAward",
+    "number": "395649"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "secondAward",
+    "number": "535879"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "secondAward",
+    "number": "541360"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "secondAward",
+    "number": "705339"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "secondAward",
+    "number": "940750"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "thirdAward",
+    "number": "001674"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "thirdAward",
+    "number": "244925"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "thirdAward",
+    "number": "306594"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "thirdAward",
+    "number": "520401"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "thirdAward",
+    "number": "548079"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "thirdAward",
+    "number": "622523"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "thirdAward",
+    "number": "652889"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "thirdAward",
+    "number": "675125"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "thirdAward",
+    "number": "677596"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "thirdAward",
+    "number": "684824"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fourthAward",
+    "number": "008113"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fourthAward",
+    "number": "013950"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fourthAward",
+    "number": "015738"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fourthAward",
+    "number": "016090"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fourthAward",
+    "number": "027753"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fourthAward",
+    "number": "038094"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fourthAward",
+    "number": "050212"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fourthAward",
+    "number": "057832"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fourthAward",
+    "number": "058439"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fourthAward",
+    "number": "078548"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fourthAward",
+    "number": "092256"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fourthAward",
+    "number": "131593"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fourthAward",
+    "number": "161098"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fourthAward",
+    "number": "190807"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fourthAward",
+    "number": "204029"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fourthAward",
+    "number": "213544"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fourthAward",
+    "number": "278382"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fourthAward",
+    "number": "290687"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fourthAward",
+    "number": "298749"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fourthAward",
+    "number": "427937"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fourthAward",
+    "number": "457402"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fourthAward",
+    "number": "459409"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fourthAward",
+    "number": "480235"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fourthAward",
+    "number": "546034"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fourthAward",
+    "number": "561029"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fourthAward",
+    "number": "566692"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fourthAward",
+    "number": "569826"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fourthAward",
+    "number": "634427"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fourthAward",
+    "number": "660528"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fourthAward",
+    "number": "701605"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fourthAward",
+    "number": "710865"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fourthAward",
+    "number": "716777"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fourthAward",
+    "number": "756547"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fourthAward",
+    "number": "764375"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fourthAward",
+    "number": "797488"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fourthAward",
+    "number": "804204"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fourthAward",
+    "number": "817747"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fourthAward",
+    "number": "861281"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fourthAward",
+    "number": "868076"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fourthAward",
+    "number": "880620"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fourthAward",
+    "number": "885697"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fourthAward",
+    "number": "887778"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fourthAward",
+    "number": "899895"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fourthAward",
+    "number": "903158"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fourthAward",
+    "number": "918343"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fourthAward",
+    "number": "934638"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fourthAward",
+    "number": "942634"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fourthAward",
+    "number": "943675"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fourthAward",
+    "number": "945942"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fourthAward",
+    "number": "973735"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "001311"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "008013"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "034511"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "046157"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "065049"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "065631"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "086444"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "106912"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "108633"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "111649"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "119380"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "121072"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "125783"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "143328"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "144434"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "145171"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "151650"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "179816"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "184733"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "189068"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "199215"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "201994"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "207767"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "236198"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "256229"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "281184"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "284141"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "326362"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "345000"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "353375"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "354968"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "386242"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "398243"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "403028"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "419591"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "438689"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "461698"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "467501"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "471878"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "481513"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "481695"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "494701"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "506280"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "516749"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "517820"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "523205"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "546843"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "550836"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "551847"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "581222"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "589674"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "592498"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "596942"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "606799"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "606888"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "607082"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "616824"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "636970"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "639524"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "652471"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "657966"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "662994"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "666919"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "669220"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "686559"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "726339"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "738848"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "754053"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "758375"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "768993"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "772896"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "782557"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "793471"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "805358"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "806729"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "817022"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "825547"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "839387"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "847903"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "855924"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "864454"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "868566"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "869948"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "877172"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "884084"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "887877"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "895073"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "917067"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "921048"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "926246"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "939624"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "946833"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "953966"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "954420"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "960776"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "961577"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "965793"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "973062"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "981823"
+  },
+  {
+    "date": "1_6_2543",
+    "award_type": "fifthAward",
+    "number": "990821"
+  }
+]

@@ -1,0 +1,37 @@
+[
+  {
+    "date": "1_2_2543",
+    "award_type": "firstAward",
+    "number": "530213"
+  },
+  {
+    "date": "1_2_2543",
+    "award_type": "three_prefix",
+    "number": ""
+  },
+  {
+    "date": "1_2_2543",
+    "award_type": "three_suffix",
+    "number": "094"
+  },
+  {
+    "date": "1_2_2543",
+    "award_type": "three_suffix",
+    "number": "109"
+  },
+  {
+    "date": "1_2_2543",
+    "award_type": "three_suffix",
+    "number": "597"
+  },
+  {
+    "date": "1_2_2543",
+    "award_type": "three_suffix",
+    "number": "926"
+  },
+  {
+    "date": "1_2_2543",
+    "award_type": "two_suffix",
+    "number": "85"
+  }
+]
