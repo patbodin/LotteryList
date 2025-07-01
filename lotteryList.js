@@ -110,6 +110,7 @@ async function processScrape(dateName, year){
         // console.log(fullList);
 
         utils.writeJSON("งวด-" + utils.dateConversion(saveFileName, "TH", true), year, fullList);
+        utils.writeFlatJSON("งวด-" + utils.dateConversion(saveFileName, "TH", true), year, fullList);
         console.log(chalk.green("-- " + contextPath + " DONE!" + " --"));
     } catch(err) {
         console.log(err);

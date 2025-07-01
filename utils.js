@@ -39,6 +39,37 @@ function writeJSON(filename, subdir, data) {
     })
 }
 
+function writeFlatJSON(filename, subdir, fullList) {
+    var dir = "./list/flat/" + subdir + "/";
+
+    if (!fs.existsSync(dir)){
+        fs.mkdirSync(dir, { recursive: true });
+    }
+
+    const result = [];
+    const myData = fullList.data;
+
+    // แปลงให้เป็น flat array ในรูป { award_type, number, date }
+    for (const [awardType, numbers] of Object.entries(myData)) {
+    numbers.forEach((number) => {
+        result.push({
+        date: fullList.name,       // เช่น "1_4_2568"
+        award_type: awardType,    // เช่น "firstAward"
+        number: number            // เช่น "669687"
+        });
+    });
+    }
+
+    fs.writeFile(dir + filename + ".json", JSON.stringify(result, null, 2), (err) => {
+        if(err) {
+            console.log(err);
+            return;
+        }
+
+        console.log("Write [Flat] File " + chalk.bold.yellow("Completed!"));
+    })
+}
+
 function generateInstallmentName(fullDateTime){
     const monthList = {
         "มกราคม": {
@@ -606,6 +637,7 @@ function findNumberInLottery(objJSON, myNumber){
 module.exports = {
     getElementJSON,
     writeJSON,
+    writeFlatJSON,
     generateInstallmentName,
     dateConvertTHNameToNumber,
     findLotteryFile,
