@@ -35,6 +35,8 @@ function main(){
         const objJSON = utils.findLotteryFile(myArgs[1]);
 
         utils.findNumberInLottery(objJSON, myArgs[0]);
+
+        utils.findCloseNumberInLottery(objJSON, myArgs[0]);
         
     }
     else {

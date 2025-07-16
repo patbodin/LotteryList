@@ -700,6 +700,155 @@ function findNumberInLottery(objJSON, myNumber){
     // console.log('====> ' + bbb.source.replace("abcd", "\d\d\d89"));
 }
 
+function findCloseNumberInLottery(objJSON, myNumber) {
+    console.log("=========== Close Number ===========");
+    const myRegex = /^xxx$/;
+
+    //-- Check Award 1,2,3,4,5
+    const objRegex = RegExp(myRegex.source.replace("xxx", replaceRegexSet6(myNumber)), 'g');
+
+    Object.keys(objJSON["data"]).forEach(key => {
+        //console.log(`==> ${key} : ` + objJSON["data"][key]);
+
+        var arrResult = JSON.parse(Enumerable.from(objJSON["data"][key]).where(x => x.match(objRegex) && x != myNumber).select(x => x).toJSONString());
+
+        if(arrResult.length > 0) {
+            console.log('key: ' + key);
+            // console.log("array length: " + arrResult.length);
+            console.log(arrResult);
+        }
+    });
+
+    //-- Check Prefix 3
+    const numPrefix3 = String(myNumber).substring(0, 3);
+
+    const objRegexPrefix = RegExp(myRegex.source.replace("xxx", replaceRegexSet3(numPrefix3)), 'g');
+
+    Object.keys(objJSON["data"]).forEach(key => {
+        //console.log(`==> ${key} : ` + objJSON["data"][key]);
+        //console.log("=> Prefix " + objRegexPrefix);
+        //console.log("=> Suffix3 " + objRegexPrefix);
+
+        if(key == "three_prefix") {
+            var arrResult = JSON.parse(Enumerable.from(objJSON["data"][key]).where(x => x.match(objRegexPrefix) && x != numPrefix3).select(x => x).toJSONString());
+
+            if(arrResult.length > 0) {
+                console.log('key: ' + key);
+                // console.log("array length: " + arrResult.length);
+                console.log(arrResult);
+            }
+        }
+        
+    });
+
+    //-- Check Suffix 2,3
+    const numSuffix3 = String(myNumber).substring(3, 6);
+    const numSuffix2 = String(myNumber).substring(4, 6);
+
+    const objRegexSuffix3 = RegExp(myRegex.source.replace("xxx", replaceRegexSet3(numSuffix3)), 'g');
+    const objRegexSuffix2 = RegExp(myRegex.source.replace("xxx", replaceRegexSet2(numSuffix2)), 'g');
+
+    Object.keys(objJSON["data"]).forEach(key => {
+        //console.log(`==> ${key} : ` + objJSON["data"][key]);
+        //console.log("=> Suffix3 " + objRegexSuffix3);
+        //console.log("=> Suffix2 " + objRegexSuffix2);
+
+        if(key == "three_suffix") {
+            var arrResult = JSON.parse(Enumerable.from(objJSON["data"][key]).where(x => x.match(objRegexSuffix3) && x != numSuffix3).select(x => x).toJSONString());
+
+            if(arrResult.length > 0) {
+                console.log('key: ' + key);
+                // console.log("array length: " + arrResult.length);
+                console.log(arrResult);
+            }
+        }
+        else if(key == "two_suffix") {
+            var arrResult = JSON.parse(Enumerable.from(objJSON["data"][key]).where(x => x.match(objRegexSuffix2) && x != numSuffix2).select(x => x).toJSONString());
+
+            if(arrResult.length > 0) {
+                console.log('key: ' + key);
+                // console.log("array length: " + arrResult.length);
+                console.log(arrResult);
+            }
+        }
+        
+    });
+}
+
+function replaceRegexSet2(inputNum) {
+    var resultStr = "";
+    var numSet1 = `${inputNum[0]}[0-9]`;
+    var numSet2 = `[0-9]${inputNum[1]}`;
+
+    resultStr = `(${numSet1}|${numSet2})`;
+
+    return resultStr;
+}
+
+function replaceRegexSet3(inputNum) {
+    var resultStr = "";
+    var numSet1 = `${inputNum[0]}[0-9]${inputNum[2]}`;
+    var numSet2 = `${inputNum[0]}${inputNum[1]}[0-9]`;
+    var numSet3 = `[0-9]${inputNum[1]}${inputNum[2]}`;
+
+    var numSet4 = `[0-9]${inputNum[1]}[0-9]`;
+    var numSet5 = `${inputNum[0]}[0-9][0-9]`;
+    var numSet6 = `[0-9][0-9]${inputNum[2]}`;
+
+    resultStr = `(${numSet1}|${numSet2}|${numSet3}|${numSet4}|${numSet5}|${numSet6})`;
+
+    return resultStr;
+}
+
+function replaceRegexSet6(inputNum) {
+    var resultStr = "";
+    var miniSet1 = "";
+    var miniSet2 = "";
+    var miniSet3 = "";
+    var miniSet4 = "";
+    var miniSet5 = "";
+    var miniSet6 = "";
+    var numSet0 = `${inputNum[0]}${inputNum[1]}${inputNum[2]}${inputNum[3]}${inputNum[4]}${inputNum[5]}`;
+
+    var numSet1 = `[0-9]${inputNum[1]}${inputNum[2]}${inputNum[3]}${inputNum[4]}${inputNum[5]}`;
+    var numSet2 = `${inputNum[0]}[0-9]${inputNum[2]}${inputNum[3]}${inputNum[4]}${inputNum[5]}`;
+    var numSet3 = `${inputNum[0]}${inputNum[1]}[0-9]${inputNum[3]}${inputNum[4]}${inputNum[5]}`;
+    var numSet4 = `${inputNum[0]}${inputNum[1]}${inputNum[2]}[0-9]${inputNum[4]}${inputNum[5]}`;
+    var numSet5 = `${inputNum[0]}${inputNum[1]}${inputNum[2]}${inputNum[3]}[0-9]${inputNum[5]}`;
+    var numSet6 = `${inputNum[0]}${inputNum[1]}${inputNum[2]}${inputNum[3]}${inputNum[4]}[0-9]`;
+
+    var numSet7 = `[0-9][0-9]${inputNum[2]}${inputNum[3]}${inputNum[4]}${inputNum[5]}`;
+    var numSet8 = `[0-9]${inputNum[1]}[0-9]${inputNum[3]}${inputNum[4]}${inputNum[5]}`;
+    var numSet9 = `[0-9]${inputNum[1]}${inputNum[2]}[0-9]${inputNum[4]}${inputNum[5]}`;
+    var numSet10 = `[0-9]${inputNum[1]}${inputNum[2]}${inputNum[3]}[0-9]${inputNum[5]}`;
+    var numSet11 = `[0-9]${inputNum[1]}${inputNum[2]}${inputNum[3]}${inputNum[4]}[0-9]`;
+
+    var numSet12 = `${inputNum[0]}[0-9][0-9]${inputNum[3]}${inputNum[4]}${inputNum[5]}`;
+    var numSet13 = `${inputNum[0]}[0-9]${inputNum[2]}[0-9]${inputNum[4]}${inputNum[5]}`;
+    var numSet14 = `${inputNum[0]}[0-9]${inputNum[2]}${inputNum[3]}[0-9]${inputNum[5]}`;
+    var numSet15 = `${inputNum[0]}[0-9]${inputNum[2]}${inputNum[3]}${inputNum[4]}[0-9]`;
+
+    var numSet16 = `${inputNum[0]}${inputNum[1]}[0-9][0-9]${inputNum[4]}${inputNum[5]}`;
+    var numSet17 = `${inputNum[0]}${inputNum[1]}[0-9]${inputNum[3]}[0-9]${inputNum[5]}`;
+    var numSet18 = `${inputNum[0]}${inputNum[1]}[0-9]${inputNum[3]}${inputNum[4]}[0-9]`;
+
+    var numSet19 = `${inputNum[0]}${inputNum[1]}${inputNum[2]}[0-9][0-9]${inputNum[5]}`;
+    var numSet20 = `${inputNum[0]}${inputNum[1]}${inputNum[2]}[0-9]${inputNum[4]}[0-9]`;
+
+    var numSet21 = `${inputNum[0]}${inputNum[1]}${inputNum[2]}${inputNum[3]}[0-9][0-9]`;
+
+    miniSet1 = `${numSet1}|${numSet2}|${numSet3}|${numSet4}|${numSet5}|${numSet6}`;
+    miniSet2 = `${numSet7}|${numSet8}|${numSet9}|${numSet10}|${numSet11}`;
+    miniSet3 = `${numSet12}|${numSet13}|${numSet14}|${numSet15}`;
+    miniSet4 = `${numSet16}|${numSet17}|${numSet18}`;
+    miniSet5 = `${numSet19}|${numSet20}`;
+    miniSet6 = `${numSet21}`;
+
+    resultStr = `(${miniSet1}|${miniSet2}|${miniSet3}|${miniSet4}|${miniSet5}|${miniSet6})`;
+
+    return resultStr;
+}
+
 module.exports = {
     getElementJSON,
     writeJSON,
@@ -712,5 +861,6 @@ module.exports = {
     validateInputNumber,
     validateFileName,
     findNumberInLottery,
+    findCloseNumberInLottery,
     dateConversion
 };
