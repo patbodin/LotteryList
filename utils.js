@@ -808,6 +808,10 @@ function replaceRegexSet6(inputNum) {
     var miniSet4 = "";
     var miniSet5 = "";
     var miniSet6 = "";
+    var miniSet7 = "";
+    var miniSet8 = "";
+    var miniSet9 = "";
+    var miniSet10 = "";
     var numSet0 = `${inputNum[0]}${inputNum[1]}${inputNum[2]}${inputNum[3]}${inputNum[4]}${inputNum[5]}`;
 
     var numSet1 = `[0-9]${inputNum[1]}${inputNum[2]}${inputNum[3]}${inputNum[4]}${inputNum[5]}`;
@@ -843,8 +847,46 @@ function replaceRegexSet6(inputNum) {
     miniSet4 = `${numSet16}|${numSet17}|${numSet18}`;
     miniSet5 = `${numSet19}|${numSet20}`;
     miniSet6 = `${numSet21}`;
+    //////////////////////////////////////////////////////////
+    var numSet22 = `[0-9][0-9][0-9]${inputNum[3]}${inputNum[4]}${inputNum[5]}`;
+    var numSet23 = `[0-9][0-9]${inputNum[2]}[0-9]${inputNum[4]}${inputNum[5]}`;
+    var numSet24 = `[0-9][0-9]${inputNum[2]}${inputNum[3]}[0-9]${inputNum[5]}`;
+    var numSet25 = `[0-9][0-9]${inputNum[2]}${inputNum[3]}${inputNum[4]}[0-9]`;
 
-    resultStr = `(${miniSet1}|${miniSet2}|${miniSet3}|${miniSet4}|${miniSet5}|${miniSet6})`;
+    var numSet26 = `[0-9]${inputNum[1]}[0-9][0-9]${inputNum[4]}${inputNum[5]}`;
+    var numSet27 = `[0-9]${inputNum[1]}[0-9]${inputNum[3]}[0-9]${inputNum[5]}`;
+    var numSet28 = `[0-9]${inputNum[1]}[0-9]${inputNum[3]}${inputNum[4]}[0-9]`;
+
+    var numSet29 = `[0-9]${inputNum[1]}${inputNum[2]}[0-9][0-9]${inputNum[5]}`;
+    var numSet30 = `[0-9]${inputNum[1]}${inputNum[2]}[0-9]${inputNum[4]}[0-9]`;
+    var numSet31 = `[0-9]${inputNum[1]}${inputNum[2]}${inputNum[3]}[0-9][0-9]`;
+    
+    miniSet7 = `${numSet22}|${numSet23}|${numSet24}|${numSet25}|${numSet26}|${numSet27}|${numSet28}|${numSet29}|${numSet30}|${numSet31}`;
+    //////////////////////////////////////////////////////////
+    var numSet32 = `${inputNum[0]}[0-9][0-9][0-9]${inputNum[4]}${inputNum[5]}`;
+    var numSet33 = `${inputNum[0]}[0-9][0-9]${inputNum[3]}[0-9]${inputNum[5]}`;
+    var numSet34 = `${inputNum[0]}[0-9][0-9]${inputNum[3]}${inputNum[4]}[0-9]`;
+
+    var numSet35 = `${inputNum[0]}[0-9]${inputNum[2]}[0-9][0-9]${inputNum[5]}`;
+    var numSet36 = `${inputNum[0]}[0-9]${inputNum[2]}[0-9]${inputNum[4]}[0-9]`;
+
+    var numSet37 = `${inputNum[0]}[0-9]${inputNum[2]}${inputNum[3]}[0-9][0-9]`;
+
+    miniSet8 = `${numSet32}|${numSet33}|${numSet34}|${numSet35}|${numSet36}|${numSet37}`;
+    //////////////////////////////////////////////////////////
+    var numSet38 = `${inputNum[0]}${inputNum[1]}[0-9][0-9][0-9]${inputNum[5]}`;
+    var numSet39 = `${inputNum[0]}${inputNum[1]}[0-9][0-9]${inputNum[4]}[0-9]`;
+
+    var numSet40 = `${inputNum[0]}${inputNum[1]}[0-9]${inputNum[3]}[0-9][0-9]`;
+
+    miniSet9 = `${numSet38}|${numSet39}|${numSet40}`;
+    //////////////////////////////////////////////////////////
+    var numSet41 = `${inputNum[0]}${inputNum[1]}${inputNum[2]}[0-9][0-9][0-9]`;
+
+    miniSet10 = `${numSet41}`;
+    //////////////////////////////////////////////////////////
+
+    resultStr = `(${miniSet1}|${miniSet2}|${miniSet3}|${miniSet4}|${miniSet5}|${miniSet6}|${miniSet7}|${miniSet8}|${miniSet9}|${miniSet10})`;
 
     return resultStr;
 }
