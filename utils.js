@@ -5,6 +5,7 @@ const writeXlsxFile = require("write-excel-file/node");
 const process = require("process");
 const exceljs = require('exceljs');
 const Enumerable = require('linq');
+const { Console } = require('console');
 
 function getElementJSON(myYear) {
     for(i = 0; i < configDate.installmentList.length; i++){
@@ -609,17 +610,82 @@ function findNumberInLottery(objJSON, myNumber){
     const myRegex = /^xxx$/;
 
     // const aaa = RegExp(/83/, 'g');
+    //-- Check Award 1,2,3,4,5
     const objRegex = RegExp(myRegex.source.replace("xxx", myNumber), 'g');
 
-    for (const key in objJSON) {
-        // console.log('key: ' + key);
-        // console.log('value: ' + objJSON[key] + ' --- ' + objJSON[key].length);
+    Object.keys(objJSON["data"]).forEach(key => {
+        //console.log(`==> ${key} : ` + objJSON["data"][key]);
+
+        var arrResult = JSON.parse(Enumerable.from(objJSON["data"][key]).where(x => x.match(objRegex)).select(x => x).toJSONString());
+
+        if(arrResult.length > 0) {
+            console.log('key: ' + key);
+            // console.log("array length: " + arrResult.length);
+            console.log(arrResult);
+        }
+    });
+
+    //-- Check Prefix 3
+    const objRegexPrefix = RegExp(myRegex.source.replace("xxx", String(myNumber).substring(0, 3)), 'g');
+
+    Object.keys(objJSON["data"]).forEach(key => {
+        //console.log(`==> ${key} : ` + objJSON["data"][key]);
+        //console.log("=> Prefix " + objRegexPrefix);
+
+        if(key == "three_prefix") {
+            var arrResult = JSON.parse(Enumerable.from(objJSON["data"][key]).where(x => x.match(objRegexPrefix)).select(x => x).toJSONString());
+
+            if(arrResult.length > 0) {
+                console.log('key: ' + key);
+                // console.log("array length: " + arrResult.length);
+                console.log(arrResult);
+            }
+        }
+        
+    });
+
+    //-- Check Suffix 2,3
+    const objRegexSuffix3 = RegExp(myRegex.source.replace("xxx", String(myNumber).substring(3, 6)), 'g');
+    const objRegexSuffix2 = RegExp(myRegex.source.replace("xxx", String(myNumber).substring(4, 6)), 'g');
+
+    Object.keys(objJSON["data"]).forEach(key => {
+        //console.log(`==> ${key} : ` + objJSON["data"][key]);
+        //console.log("=> Suffix3 " + objRegexSuffix3);
+        //console.log("=> Suffix2 " + objRegexSuffix2);
+
+        if(key == "three_suffix") {
+            var arrResult = JSON.parse(Enumerable.from(objJSON["data"][key]).where(x => x.match(objRegexSuffix3)).select(x => x).toJSONString());
+
+            if(arrResult.length > 0) {
+                console.log('key: ' + key);
+                // console.log("array length: " + arrResult.length);
+                console.log(arrResult);
+            }
+        }
+        else if(key == "two_suffix") {
+            var arrResult = JSON.parse(Enumerable.from(objJSON["data"][key]).where(x => x.match(objRegexSuffix2)).select(x => x).toJSONString());
+
+            if(arrResult.length > 0) {
+                console.log('key: ' + key);
+                // console.log("array length: " + arrResult.length);
+                console.log(arrResult);
+            }
+        }
+        
+    });
+
+    /* for (const key in objJSON["data"]) {
+        //console.log('key: ' + key);
+        //console.log('value: ' + objJSON[key] + ' --- ' + objJSON[key].length);
+        //console.log('myNumber: ' + myNumber);
+        console.log(objJSON[key]);
         if(Array.isArray(objJSON[key])) {
             
             // console.log('value: ' + objJSON[key] + ' --- ' + objJSON[key].length);
             // var xx = Enumberable.from(objJSON[key]).where(x => x == "83").select(x => x).toJSONString();
             var arrResult = JSON.parse(Enumerable.from(objJSON[key]).where(x => x.match(objRegex)).select(x => x).toJSONString());
             
+
             if(arrResult.length > 0){
                 console.log('key: ' + key);
                 // console.log("array length: " + arrResult.length);
@@ -627,7 +693,7 @@ function findNumberInLottery(objJSON, myNumber){
             }
             
         }
-    }
+    } */
     // console.log("test => " + objJSON['secondAward']);
 
     // const bbb = /abcd/g;
