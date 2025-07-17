@@ -895,19 +895,18 @@ function replaceRegexSet6(inputNum) {
 
 function testReplaceStr(){
     const myNum = "123456";
+    const patterns = [];
 
     var result = "";
 
-    for(var i = 0; i < myNum.length; i++) {
-        result += myNum[i];
+    //-- To generate set: [0-9]23456|1[0-9]3456|12[0-9]456|123[0-9]56|1234[0-9]6|12345[0-9]
+    myNum.split('').forEach((char, index) => {
+        // สร้าง string ใหม่โดยแทนที่ตำแหน่ง index ด้วย [0-9]
+        const replaced = myNum.substring(0, index) + '[0-9]' + myNum.substring(index + 1);
+        patterns.push(replaced);
+    });
 
-        for(var j = 0; j < myNum.length; j++) {
-            if(j != i)
-                result += myNum[j];
-        }
-
-        result += "|";
-    }
+    result = patterns.join("|");
 
     return result;
 }
