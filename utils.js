@@ -707,7 +707,8 @@ function findCloseNumberInLottery(objJSON, myNumber) {
     const myRegex = /^xxx$/;
 
     //-- Check Award 1,2,3,4,5
-    const objRegex = RegExp(myRegex.source.replace("xxx", replaceRegexSet6(myNumber)), 'g');
+    //const objRegex = RegExp(myRegex.source.replace("xxx", replaceRegexSet6(myNumber)), 'g');
+    const objRegex = RegExp(myRegex.source.replace("xxx", generateReplaceStrRegexp(myNumber)), 'g');
 
     Object.keys(objJSON["data"]).forEach(key => {
         //console.log(`==> ${key} : ` + objJSON["data"][key]);
@@ -893,8 +894,8 @@ function replaceRegexSet6(inputNum) {
     return resultStr;
 }
 
-function generateReplaceStrRegexp(){
-    const myNum = "123456";
+function generateReplaceStrRegexp(myNum){
+    //const myNum = "123456";
     const patterns = [];
 
     const replaceLen = 2; // จำนวนตำแหน่งที่ต้องแทนพร้อมกัน
