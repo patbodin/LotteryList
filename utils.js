@@ -603,6 +603,8 @@ function validateFileName(myInput) {
 }
 
 function findNumberInLottery(objJSON, myNumber){
+    console.log(testReplaceStr());
+    console.log("=========== Perfect Match ===========");
     // console.log(objJSON);
     // Enumberable.from(objJSON).where(x => x == "83").select(x => x).log().toJoinedString();
 
@@ -889,6 +891,25 @@ function replaceRegexSet6(inputNum) {
     resultStr = `(${miniSet1}|${miniSet2}|${miniSet3}|${miniSet4}|${miniSet5}|${miniSet6}|${miniSet7}|${miniSet8}|${miniSet9}|${miniSet10})`;
 
     return resultStr;
+}
+
+function testReplaceStr(){
+    const myNum = "123456";
+
+    var result = "";
+
+    for(var i = 0; i < myNum.length; i++) {
+        result += myNum[i];
+
+        for(var j = 0; j < myNum.length; j++) {
+            if(j != i)
+                result += myNum[j];
+        }
+
+        result += "|";
+    }
+
+    return result;
 }
 
 module.exports = {
