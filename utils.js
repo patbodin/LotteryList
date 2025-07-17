@@ -603,7 +603,7 @@ function validateFileName(myInput) {
 }
 
 function findNumberInLottery(objJSON, myNumber){
-    console.log(testReplaceStr());
+    //console.log(generateReplaceStrRegexp());
     console.log("=========== Perfect Match ===========");
     // console.log(objJSON);
     // Enumberable.from(objJSON).where(x => x == "83").select(x => x).log().toJoinedString();
@@ -893,9 +893,11 @@ function replaceRegexSet6(inputNum) {
     return resultStr;
 }
 
-function testReplaceStr(){
+function generateReplaceStrRegexp(){
     const myNum = "123456";
     const patterns = [];
+
+    const replaceLen = 2; // จำนวนตำแหน่งที่ต้องแทนพร้อมกัน
 
     var result = "";
 
@@ -906,8 +908,51 @@ function testReplaceStr(){
         patterns.push(replaced);
     });
 
-    result = patterns.join("|");
+    /////////////////////////////////////
+    //-- To generate set: [0-9][0-9]3456|[0-9]2[0-9]456|[0-9]23[0-9]56
+    // สร้าง index list [0, 1, 2, ..., n]
+    const indexes = Array.from(myNum, (_, i) => i);
 
+    // สร้าง combination ของตำแหน่งที่ต้องการแทน
+    const combinations = getCombinations(indexes, replaceLen);
+
+    // แทนตำแหน่งด้วย [0-9]
+    combinations.forEach((combo) => {
+        let result = '';
+        for (let i = 0; i < myNum.length; i++) {
+            result += combo.includes(i) ? '[0-9]' : myNum[i];
+        }
+        patterns.push(result);
+    });
+    ////////////////////////////////
+    //-- To generate set: [0-9][0-9][0-9]456|[0-9][0-9]3[0-9]56|[0-9][0-9]34[0-9]6
+    getCombinations(indexes, 3).forEach((combo) => {
+        let result = '';
+        for (let i = 0; i < myNum.length; i++) {
+            result += combo.includes(i) ? '[0-9]' : myNum[i];
+        }
+        patterns.push(result);
+    });
+    ////////////////////////////////
+
+    result = `(${patterns.join("|")})`;
+
+    return result;
+}
+
+// สร้าง combination ของ index ทั้งหมดจาก input.length
+function getCombinations(array, k) {
+    const result = [];
+    const combo = (start, path) => {
+        if (path.length === k) {
+        result.push([...path]);
+        return;
+        }
+        for (let i = start; i < array.length; i++) {
+        combo(i + 1, [...path, array[i]]);
+        }
+    };
+    combo(0, []);
     return result;
 }
 
