@@ -92,9 +92,9 @@ async function processScrape(dateName, year){
             
         })
         
-        itemHTML.find("div#p_result2").children(".lot-c100").each(function(i, elm) {
-            // console.log("================= รางวัลที่ " + roundNum + " =================");
-            $(this).find(".lot-dc.lotto-fx.lot-c30").each(function(j, el) {
+        itemHTML.find("div#p_result2").children("div").children(".lot-c100").each(function(i, elm) {
+             //console.log("================= รางวัลที่ " + roundNum + " =================");
+            $(this).find(".lot-dc.lotto-fx.lot-c20").each(function(j, el) {
                 //console.log($(this).text());
                 listLowerPosition[lowerRoundNum].push($(this).text().trim());
 
